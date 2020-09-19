@@ -3,7 +3,12 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
-import { userRouter } from "./route";
+/* Routers*/
+import userRouter from "./routers/userRouter";
+import videoRouter from "./routers/videoRouter";
+import globalRouter from "./routers/globalRouter";
+// import { userRouter } from "./route";
+import routes from "./routes";
 
 const app = express();
 
@@ -12,21 +17,32 @@ const app = express();
 // const handleListening = () =>
 //   console.log(`Listening on: http://localhost:${PORT}`);
 
-const handleHome = (req, res) => res.send("Hello from my home");
+// const betweenHome = (req, res, next) => {
+//   console.log("between");
+//   next();
+// };
 
-const handleProfile = (req, res) => res.send("Your are on my profile");
+// app.use(betweenHome);
 
+// const handleHome = (req, res) => res.send("Hello from my home");
+
+// const handleProfile = (req, res) => res.send("Your are on my profile");
+
+//use : middleware
 app.use(cookieParser());
-app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(helmet());
-app.use(morgan("dev"));
+app.use(helmet()); //helmet: Helmet helps you secure your Express apps by setting various HTTP headers.
+app.use(morgan("dev")); //morgan: HTTP request logger middleware for node.js
 
-app.get("/", handleHome);
+// app.get("/", handleHome);
 
-app.get("/profile", handleProfile);
+// app.get("/profile", handleProfile);
 
-app.use("/user", userRouter);
+// app.use("/user", userRouter);
+app.use(routes.home, globalRouter);
+app.use(routes.users, userRouter);
+app.use(routes.videos, videoRouter);
 
 // app.listen(PORT, handleListening);
 
