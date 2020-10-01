@@ -28,6 +28,8 @@ const app = express();
 
 // const handleProfile = (req, res) => res.send("Your are on my profile");
 
+app.set("view engine", "pug");
+
 //use : middleware
 app.use(cookieParser());
 app.use(bodyParser.json());
