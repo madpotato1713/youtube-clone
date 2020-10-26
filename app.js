@@ -31,6 +31,13 @@ const app = express();
 
 //use : middleware
 app.use(helmet()); //helmet: Helmet helps you secure your Express apps by setting various HTTP headers.
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src 'self' http://archive.org"
+  );
+  return next();
+});
 app.set("view engine", "pug");
 app.use(cookieParser());
 app.use(bodyParser.json());
