@@ -1,0 +1,22 @@
+{
+  "name": "youtube-clone",
+  "version": "1.0.0",
+  "description": "The best way to watch a videos",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madpotato1713/youtube-clone.git"
+  },
+  "author": "Chung Il Shin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madpotato1713/youtube-clone/issues"
+  },
+  "homepage": "https://github.com/madpotato1713/youtube-clone#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
